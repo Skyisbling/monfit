@@ -1,14 +1,16 @@
 import "../App.css";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
     <div className="site">
-
+      {/* NAVBAR */}
       <nav className="navbar">
         <div className="brand">
-          <span>MON</span>FIT
+          <span>মন</span>FIT
         </div>
 
+        {/* CENTER NAVIGATION */}
         <div className="nav-links">
           <a href="#home">Home</a>
           <a href="#programs">Programs</a>
@@ -16,22 +18,34 @@ function Home() {
           <a href="#contact">Contact</a>
         </div>
 
-        <button className="nav-btn">Join Monfit →</button>
+        {/* RIGHT-SIDE ACTIONS */}
+        <div className="nav-actions">
+  <Link to="/register" className="nav-btn">
+    Join Monfit →
+  </Link>
+
+  <Link to="/login" className="login-link">
+    Login
+  </Link>
+</div>
       </nav>
 
       <main>
-
         {/* HERO */}
         <section className="hero" id="home">
-
           <div className="hero-image">
-            <img src="/monfit-hero.jpg" alt="Monfit fitness journey" />
+            <img
+              src="/monfit-hero.jpg"
+              alt="Monfit fitness journey"
+            />
           </div>
 
           <div className="hero-overlay" />
 
           <div className="hero-content">
-            <p className="eyebrow">FITNESS • DISCIPLINE • LIFESTYLE</p>
+            <p className="eyebrow">
+              FITNESS • DISCIPLINE • LIFESTYLE
+            </p>
 
             <h1>
               BUILD THE
@@ -45,13 +59,13 @@ function Home() {
             </p>
 
             <div className="hero-buttons">
-              <button className="primary-btn">
+              <Link to="/register" className="primary-btn">
                 Start Your Journey →
-              </button>
+              </Link>
 
-              <button className="outline-btn">
+              <a href="#programs" className="outline-btn">
                 Explore Programs
-              </button>
+              </a>
             </div>
           </div>
 
@@ -59,15 +73,14 @@ function Home() {
             <strong>MONFIT</strong>
             <span>YOUR FITNESS JOURNEY</span>
           </div>
-
         </section>
 
-
-        {/* INTRO */}
+        {/* INTRO / ABOUT */}
         <section className="intro" id="about">
-
           <div>
-            <p className="eyebrow dark">THE MONFIT PHILOSOPHY</p>
+            <p className="eyebrow dark">
+              THE MONFIT PHILOSOPHY
+            </p>
 
             <h2>
               Fitness isn't
@@ -87,17 +100,14 @@ function Home() {
               together into one simple system.
             </p>
 
-            <button className="text-btn">
+            <a href="#programs" className="text-btn">
               Discover Monfit →
-            </button>
+            </a>
           </div>
-
         </section>
-
 
         {/* STATS */}
         <section className="stats">
-
           <div>
             <strong>01</strong>
             <span>TRAIN</span>
@@ -117,16 +127,16 @@ function Home() {
             <strong>∞</strong>
             <span>REPEAT</span>
           </div>
-
         </section>
-
 
         {/* PROGRAMS */}
         <section className="programs" id="programs">
-
           <div className="section-heading">
             <div>
-              <p className="eyebrow dark">WHAT WE DO</p>
+              <p className="eyebrow dark">
+                WHAT WE DO
+              </p>
+
               <h2>Choose your goal.</h2>
             </div>
 
@@ -137,46 +147,52 @@ function Home() {
           </div>
 
           <div className="program-grid">
-
             <article>
               <span>01</span>
+
               <h3>Fat Loss</h3>
+
               <p>
                 Build sustainable habits, improve your fitness
                 and get leaner without extreme approaches.
               </p>
+
               <button>Explore →</button>
             </article>
 
             <article>
               <span>02</span>
+
               <h3>Muscle & Strength</h3>
+
               <p>
                 Structured training designed to help you
                 build strength and muscle.
               </p>
+
               <button>Explore →</button>
             </article>
 
             <article>
               <span>03</span>
+
               <h3>Complete Fitness</h3>
+
               <p>
                 Training, nutrition and lifestyle combined
                 into one complete fitness system.
               </p>
+
               <button>Explore →</button>
             </article>
-
           </div>
-
         </section>
 
-
-        {/* CTA */}
+        {/* CTA / CONTACT */}
         <section className="cta" id="contact">
-
-          <p className="eyebrow">YOUR NEXT CHAPTER</p>
+          <p className="eyebrow">
+            YOUR NEXT CHAPTER
+          </p>
 
           <h2>
             READY TO
@@ -184,25 +200,24 @@ function Home() {
             <span>LEVEL UP?</span>
           </h2>
 
-          <button className="primary-btn">
+          <Link to="/register" className="primary-btn">
             Join Monfit →
-          </button>
-
+          </Link>
         </section>
-
       </main>
 
-
+      {/* FOOTER */}
       <footer>
         <div className="brand">
-          <span>MON</span>FIT
+          <span>মন</span>FIT
         </div>
 
         <p>Train hard. Live better.</p>
 
-        <small>© 2026 Monfit. All rights reserved.</small>
+        <small>
+          © 2026 Monfit. All rights reserved.
+        </small>
       </footer>
-
     </div>
   );
 }

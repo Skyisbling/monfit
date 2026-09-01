@@ -1,4 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap");
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
 
 * {
   box-sizing: border-box;
@@ -15,28 +19,45 @@ body {
   font-family: "DM Sans", sans-serif;
 }
 
-button {
+button,
+input {
   font-family: inherit;
+}
+
+button {
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }
 
 .site {
   overflow: hidden;
+  min-height: 100vh;
 }
 
-/* NAVBAR */
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
 
 .navbar {
   height: 78px;
   padding: 0 6%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   background: #11120f;
   color: white;
+  position: relative;
+  z-index: 100;
 }
 
+/* BRAND */
+
 .brand {
+  justify-self: start;
   font-family: "Oswald", sans-serif;
   font-size: 28px;
   font-weight: 700;
@@ -47,30 +68,96 @@ button {
   color: #c5f05a;
 }
 
+/* CENTER NAVIGATION */
+
 .nav-links {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 35px;
 }
 
 .nav-links a {
   color: #aaa;
-  text-decoration: none;
   font-size: 13px;
+  transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
   color: white;
 }
 
+/*
+   RIGHT SIDE
+
+   IMPORTANT:
+   Your Home.tsx currently has Join + Login directly
+   inside .navbar, so this selector handles them together.
+*/
+
+.navbar > .nav-btn,
+.navbar > .login-link {
+  justify-self: end;
+}
+
+.navbar > .nav-btn {
+  grid-column: 3;
+  margin-right: 75px;
+}
+
+.navbar > .login-link {
+  grid-column: 3;
+}
+
+/* If you later use .nav-actions */
+
+.nav-actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+/* JOIN */
+
 .nav-btn {
   background: #c5f05a;
+  color: #11120f;
   border: none;
   padding: 11px 18px;
   border-radius: 4px;
   font-weight: 700;
+  font-size: 13px;
+  white-space: nowrap;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
-/* HERO */
+.nav-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* LOGIN */
+
+.login-link {
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 11px 0;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.login-link:hover {
+  color: #c5f05a;
+}
+
+
+/* =========================================================
+   LANDING PAGE — HERO
+   ========================================================= */
 
 .hero {
   height: calc(100vh - 78px);
@@ -79,6 +166,7 @@ button {
   color: white;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 .hero-image {
@@ -149,11 +237,21 @@ button {
 }
 
 .primary-btn {
+  display: inline-block;
   background: #c5f05a;
+  color: #11120f;
   border: none;
   padding: 15px 23px;
   font-weight: 800;
   border-radius: 3px;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
 }
 
 .outline-btn {
@@ -185,7 +283,10 @@ button {
   letter-spacing: 2px;
 }
 
-/* INTRO */
+
+/* =========================================================
+   LANDING PAGE — INTRO
+   ========================================================= */
 
 .intro {
   padding: 120px 9%;
@@ -225,7 +326,10 @@ button {
   font-weight: 800;
 }
 
-/* STATS */
+
+/* =========================================================
+   LANDING PAGE — STATS
+   ========================================================= */
 
 .stats {
   display: grid;
@@ -237,6 +341,10 @@ button {
 .stats div {
   padding: 35px 9%;
   border-right: 1px solid #d8d9d2;
+}
+
+.stats div:last-child {
+  border-right: none;
 }
 
 .stats strong {
@@ -252,7 +360,10 @@ button {
   font-weight: 700;
 }
 
-/* PROGRAMS */
+
+/* =========================================================
+   LANDING PAGE — PROGRAMS
+   ========================================================= */
 
 .programs {
   padding: 120px 9%;
@@ -284,6 +395,14 @@ button {
   min-height: 330px;
   display: flex;
   flex-direction: column;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.program-grid article:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(17, 18, 15, 0.18);
 }
 
 .program-grid article > span {
@@ -312,7 +431,10 @@ button {
   padding: 15px 0 0;
 }
 
-/* CTA */
+
+/* =========================================================
+   LANDING PAGE — CTA
+   ========================================================= */
 
 .cta {
   background: #191b17;
@@ -329,7 +451,10 @@ button {
   margin: 30px 0 45px;
 }
 
-/* FOOTER */
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 footer {
   background: #11120f;
@@ -348,95 +473,132 @@ footer small {
   font-size: 10px;
 }
 
-/* MOBILE */
 
-@media (max-width: 800px) {
+/* =========================================================
+   AUTH — LOGIN / REGISTER
+   ========================================================= */
 
-  .navbar {
-    padding: 0 20px;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .hero {
-    min-height: 650px;
-  }
-
-  .hero-content {
-    margin-left: 6%;
-  }
-
-  .hero h1 {
-    font-size: 65px;
-    letter-spacing: -2px;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    width: 220px;
-  }
-
-  .intro {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    padding: 80px 7%;
-  }
-
-  .stats {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .stats div {
-    border-bottom: 1px solid #d8d9d2;
-  }
-
-  .programs {
-    padding: 80px 7%;
-  }
-
-  .section-heading {
-    display: block;
-  }
-
-  .program-grid {
-    grid-template-columns: 1fr;
-  }
-
-  footer {
-    flex-direction: column;
-    gap: 15px;
-  }
-
+.auth-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(197, 240, 90, 0.12),
+      transparent 35%
+    ),
+    #f1f0e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
 }
 
-  .monfit-button {
-  border: none;
-  padding: 14px 22px;
-  border-radius: 4px;
-  font-weight: 800;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+.auth-card {
+  width: min(460px, 100%);
+  background: white;
+  padding: 48px;
+  border: 1px solid #deddd5;
+  box-shadow:
+    0 20px 60px rgba(17, 18, 15, 0.08),
+    0 4px 15px rgba(17, 18, 15, 0.04);
 }
 
-.monfit-button:hover {
-  transform: translateY(-2px);
+.auth-brand {
+  font-family: "Oswald", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 45px;
 }
 
-.monfit-button.primary {
-  background: #c5f05a;
+.auth-brand span {
+  color: #c5f05a;
+}
+
+.auth-card h1 {
+  font-family: "Oswald", sans-serif;
+  font-size: 48px;
+  line-height: 0.95;
+  letter-spacing: -1px;
+  margin: 15px 0;
+}
+
+.auth-subtitle {
+  color: #777a72;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.auth-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #3e403a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.auth-card input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid #d3d2ca;
+  background: #fafaf7;
   color: #11120f;
+  outline: none;
+  font-size: 13px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.monfit-button.outline {
-  background: transparent;
-  border: 1px solid #777;
+.auth-card input:focus {
+  border-color: #11120f;
+  box-shadow: 0 0 0 2px rgba(197, 240, 90, 0.35);
+}
+
+.auth-submit {
+  margin-top: 8px;
+  width: 100%;
+  height: 52px;
+  border: none;
+  background: #11120f;
   color: white;
+  font-weight: 800;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
-/* =========================================
-   MONFIT APPLICATION
-   ========================================= */
+.auth-submit:hover {
+  background: #252721;
+  transform: translateY(-1px);
+}
+
+.auth-switch {
+  text-align: center;
+  color: #777a72;
+  font-size: 12px;
+  margin: 25px 0 0;
+}
+
+.auth-switch a {
+  color: #11120f;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   MONFIT APPLICATION LAYOUT
+   ========================================================= */
 
 .app-layout {
   min-height: 100vh;
@@ -444,6 +606,11 @@ footer small {
   background: #f3f2ed;
   color: #11120f;
 }
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
 
 .sidebar {
   width: 250px;
@@ -457,6 +624,7 @@ footer small {
   left: 0;
   top: 0;
   bottom: 0;
+  z-index: 20;
 }
 
 .sidebar-brand {
@@ -536,14 +704,26 @@ footer small {
   margin-top: 2px;
 }
 
+
+/* =========================================================
+   APPLICATION MAIN
+   ========================================================= */
+
 .app-main {
   margin-left: 250px;
   width: calc(100% - 250px);
   min-height: 100vh;
 }
 
+
+/* =========================================================
+   PLACEHOLDER PAGES
+   ========================================================= */
+
 .page-placeholder {
+  min-height: 100vh;
   padding: 60px;
+  background: #f3f2ed;
 }
 
 .page-placeholder h1 {
@@ -559,9 +739,10 @@ footer small {
   line-height: 1.6;
 }
 
-/* =========================================
-   MONFIT — PREMIUM DASHBOARD
-   ========================================= */
+
+/* =========================================================
+   PREMIUM DASHBOARD
+   ========================================================= */
 
 .mf-dashboard {
   min-height: 100vh;
@@ -570,7 +751,9 @@ footer small {
 }
 
 
-/* TOP BAR */
+/* =========================================================
+   DASHBOARD TOP BAR
+   ========================================================= */
 
 .mf-topbar {
   height: 76px;
@@ -579,6 +762,7 @@ footer small {
   align-items: center;
   justify-content: flex-end;
   border-bottom: 1px solid #d9d8d0;
+  background: #f1f0e9;
 }
 
 .mf-mobile-brand {
@@ -596,6 +780,7 @@ footer small {
   height: 40px;
   border: 1px solid #d2d1c9;
   background: transparent;
+  color: #11120f;
   font-size: 18px;
 }
 
@@ -604,7 +789,6 @@ footer small {
   margin-left: 12px;
   padding-left: 14px;
   border-left: 1px solid #d2d1c9;
-
   display: flex;
   align-items: center;
   gap: 10px;
@@ -613,14 +797,11 @@ footer small {
 .mf-profile-avatar {
   width: 34px;
   height: 34px;
-
   display: grid;
   place-items: center;
-
   border-radius: 50%;
   background: #11120f;
   color: #c9f35b;
-
   font-size: 12px;
   font-weight: 800;
 }
@@ -646,16 +827,16 @@ footer small {
 }
 
 
-/* HERO */
+/* =========================================================
+   DASHBOARD HERO
+   ========================================================= */
 
 .mf-hero {
   min-height: 390px;
   padding: 65px 7vw;
-
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-
   background: #11120f;
   color: #f4f3ed;
 }
@@ -677,10 +858,9 @@ footer small {
 
 .mf-hero h1 {
   margin: 18px 0 22px;
-
   font-family: "Oswald", sans-serif;
   font-size: clamp(80px, 11vw, 170px);
-  line-height: .78;
+  line-height: 0.78;
   letter-spacing: -6px;
 }
 
@@ -690,8 +870,7 @@ footer small {
 
 .mf-hero-description {
   max-width: 350px;
-
-  color: #aaaDA5;
+  color: #aaada5;
   font-size: 13px;
   line-height: 1.6;
 }
@@ -699,15 +878,12 @@ footer small {
 .mf-hero-mark {
   width: 220px;
   height: 220px;
-
   border: 1px solid #3b3d37;
   border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
   transform: rotate(-8deg);
 }
 
@@ -720,7 +896,7 @@ footer small {
 .mf-hero-mark strong {
   font-family: "Oswald", sans-serif;
   font-size: 45px;
-  line-height: .8;
+  line-height: 0.8;
 }
 
 .mf-hero-mark small {
@@ -731,12 +907,13 @@ footer small {
 }
 
 
-/* NUMBERS */
+/* =========================================================
+   DASHBOARD KEY NUMBERS
+   ========================================================= */
 
 .mf-numbers {
   display: grid;
   grid-template-columns: 2fr repeat(3, 1fr);
-
   border-bottom: 1px solid #d4d3cb;
 }
 
@@ -744,8 +921,11 @@ footer small {
 .mf-number-large {
   min-height: 180px;
   padding: 32px;
-
   border-right: 1px solid #d4d3cb;
+}
+
+.mf-number:last-child {
+  border-right: none;
 }
 
 .mf-number-large {
@@ -754,7 +934,6 @@ footer small {
 
 .mf-number-value {
   margin-top: 15px;
-
   font-family: "Oswald", sans-serif;
   font-size: 65px;
   letter-spacing: -2px;
@@ -762,7 +941,7 @@ footer small {
 
 .mf-number-value span {
   margin-left: 12px;
-  font-family: "Inter", sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 11px;
   color: #4e6030;
   letter-spacing: 0;
@@ -776,9 +955,7 @@ footer small {
 
 .mf-number strong {
   display: block;
-
   margin-top: 22px;
-
   font-family: "Oswald", sans-serif;
   font-size: 48px;
   letter-spacing: -1px;
@@ -792,7 +969,9 @@ footer small {
 }
 
 
-/* SECTION */
+/* =========================================================
+   DASHBOARD SECTION
+   ========================================================= */
 
 .mf-section {
   padding: 75px 7vw;
@@ -803,14 +982,12 @@ footer small {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-
   margin-bottom: 28px;
 }
 
 .mf-section-heading h2,
 .mf-panel-heading h2 {
   margin-top: 7px;
-
   font-family: "Oswald", sans-serif;
   font-size: 43px;
   letter-spacing: -1px;
@@ -819,14 +996,16 @@ footer small {
 .mf-text-button {
   border: 0;
   background: none;
-
+  color: #11120f;
   font-size: 10px;
   font-weight: 800;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
 }
 
 
-/* BRANCHES */
+/* =========================================================
+   BRANCHES
+   ========================================================= */
 
 .mf-branches {
   border-top: 1px solid #c9c8c0;
@@ -834,13 +1013,10 @@ footer small {
 
 .mf-branch {
   min-height: 105px;
-
   display: flex;
   align-items: center;
-
   border-bottom: 1px solid #c9c8c0;
-
-  transition: .25s ease;
+  transition: 0.25s ease;
 }
 
 .mf-branch:hover {
@@ -850,22 +1026,19 @@ footer small {
 
 .mf-branch-number {
   width: 70px;
-
   color: #92948b;
   font-size: 10px;
 }
 
 .mf-branch-main {
   flex: 1;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .mf-branch-main p {
-  margin-bottom: 3px;
-
+  margin: 0 0 3px;
   color: #888a82;
   font-size: 9px;
   text-transform: uppercase;
@@ -873,9 +1046,10 @@ footer small {
 }
 
 .mf-branch-main h3 {
+  margin: 0;
   font-family: "Oswald", sans-serif;
   font-size: 30px;
-  letter-spacing: -.5px;
+  letter-spacing: -0.5px;
 }
 
 .mf-branch-stats {
@@ -891,7 +1065,6 @@ footer small {
 
 .mf-branch-stats span {
   margin-bottom: 5px;
-
   color: #888a82;
   font-size: 8px;
   letter-spacing: 1px;
@@ -908,17 +1081,20 @@ footer small {
 }
 
 
-/* BOTTOM */
+/* =========================================================
+   DASHBOARD BOTTOM
+   ========================================================= */
 
 .mf-bottom-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
-
   border-top: 1px solid #d4d3cb;
 }
 
 
-/* ACTIVITY */
+/* =========================================================
+   ACTIVITY
+   ========================================================= */
 
 .mf-panel {
   padding: 65px 7vw;
@@ -937,11 +1113,9 @@ footer small {
 
 .mf-activity-row {
   min-height: 75px;
-
   display: grid;
   grid-template-columns: 100px 1fr 50px;
   align-items: center;
-
   border-bottom: 1px solid #d4d3cb;
 }
 
@@ -963,7 +1137,9 @@ footer small {
 }
 
 
-/* ACTION PANEL */
+/* =========================================================
+   QUICK ACTIONS
+   ========================================================= */
 
 .mf-action-panel {
   padding: 65px 7vw;
@@ -972,10 +1148,9 @@ footer small {
 
 .mf-action-panel h2 {
   margin: 20px 0 30px;
-
   font-family: "Oswald", sans-serif;
   font-size: 55px;
-  line-height: .82;
+  line-height: 0.82;
   letter-spacing: -2px;
 }
 
@@ -990,20 +1165,17 @@ footer small {
 .mf-actions button {
   width: 100%;
   min-height: 50px;
-
   display: grid;
   grid-template-columns: 35px 1fr 20px;
   align-items: center;
-
   background: transparent;
   border: 0;
   border-bottom: 1px solid #a8c84b;
-
   text-align: left;
-
+  color: #11120f;
   font-size: 9px;
   font-weight: 800;
-  letter-spacing: .7px;
+  letter-spacing: 0.7px;
 }
 
 .mf-actions button > span {
@@ -1016,7 +1188,130 @@ footer small {
 }
 
 
-/* RESPONSIVE */
+/* =========================================================
+   GENERAL BUTTON
+   ========================================================= */
+
+.monfit-button {
+  border: none;
+  padding: 14px 22px;
+  border-radius: 4px;
+  font-weight: 800;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.monfit-button:hover {
+  transform: translateY(-2px);
+}
+
+.monfit-button.primary {
+  background: #c5f05a;
+  color: #11120f;
+}
+
+.monfit-button.outline {
+  background: transparent;
+  border: 1px solid #777;
+  color: white;
+}
+
+
+/* =========================================================
+   RESPONSIVE — LANDING
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .navbar {
+    padding: 0 4%;
+  }
+
+  .nav-links {
+    gap: 22px;
+  }
+
+  .navbar > .nav-btn {
+    margin-right: 65px;
+  }
+
+  .intro {
+    gap: 60px;
+  }
+
+  .program-grid {
+    gap: 15px;
+  }
+}
+
+
+@media (max-width: 900px) {
+
+  /* NAVBAR */
+
+  .navbar {
+    grid-template-columns: 1fr auto auto;
+    padding: 0 25px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .navbar > .nav-btn {
+    grid-column: 2;
+    grid-row: 1;
+    margin-right: 18px;
+  }
+
+  .navbar > .login-link {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  /* LANDING */
+
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 80px 7%;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stats div {
+    border-bottom: 1px solid #d8d9d2;
+  }
+
+  .stats div:nth-child(2) {
+    border-right: none;
+  }
+
+  .programs {
+    padding: 80px 7%;
+  }
+
+  .section-heading {
+    display: block;
+  }
+
+  .program-grid {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — APPLICATION
+   ========================================================= */
 
 @media (max-width: 1000px) {
 
@@ -1040,10 +1335,91 @@ footer small {
     border-right: 0;
     border-bottom: 1px solid #d4d3cb;
   }
-
 }
 
+
+/* =========================================================
+   TABLET / MOBILE
+   ========================================================= */
+
 @media (max-width: 700px) {
+
+  /* NAVBAR */
+
+  .navbar {
+    height: 70px;
+    padding: 0 20px;
+  }
+
+  .navbar .brand {
+    font-size: 25px;
+  }
+
+  .nav-btn {
+    padding: 9px 12px;
+    font-size: 11px;
+  }
+
+  .login-link {
+    font-size: 11px;
+  }
+
+
+  /* HERO */
+
+  .hero {
+    min-height: 650px;
+  }
+
+  .hero-content {
+    margin-left: 6%;
+    width: 88%;
+  }
+
+  .hero h1 {
+    font-size: 65px;
+    letter-spacing: -2px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 220px;
+  }
+
+  .hero-tag {
+    right: 6%;
+    bottom: 25px;
+  }
+
+
+  /* AUTH */
+
+  .auth-page {
+    padding: 25px 15px;
+  }
+
+  .auth-card {
+    padding: 35px 25px;
+  }
+
+  .auth-card h1 {
+    font-size: 42px;
+  }
+
+
+  /* SIDEBAR */
+
+  .sidebar {
+    width: 210px;
+  }
+
+  .app-main {
+    margin-left: 210px;
+    width: calc(100% - 210px);
+  }
+
+
+  /* DASHBOARD TOPBAR */
 
   .mf-topbar {
     padding: 0 20px;
@@ -1052,6 +1428,7 @@ footer small {
 
   .mf-mobile-brand {
     display: block;
+    font-family: "Oswald", sans-serif;
     font-weight: 900;
     font-size: 22px;
   }
@@ -1065,10 +1442,12 @@ footer small {
     display: none;
   }
 
+
+  /* DASHBOARD HERO */
+
   .mf-hero {
     min-height: 430px;
     padding: 45px 25px;
-
     align-items: flex-start;
   }
 
@@ -1079,6 +1458,9 @@ footer small {
   .mf-hero h1 {
     font-size: 90px;
   }
+
+
+  /* NUMBERS */
 
   .mf-numbers {
     grid-template-columns: 1fr;
@@ -1093,6 +1475,9 @@ footer small {
     border-right: 0;
   }
 
+
+  /* SECTION */
+
   .mf-section {
     padding: 55px 25px;
   }
@@ -1102,6 +1487,9 @@ footer small {
     flex-direction: column;
     gap: 20px;
   }
+
+
+  /* BRANCHES */
 
   .mf-branch-main {
     display: block;
@@ -1120,6 +1508,9 @@ footer small {
     width: 40px;
   }
 
+
+  /* BOTTOM */
+
   .mf-bottom-grid {
     display: block;
   }
@@ -1137,43 +1528,180 @@ footer small {
   .mf-activity-row > span {
     display: none;
   }
-
 }
-@media (max-width: 900px) {
 
-  .dashboard {
-    padding: 30px 20px;
-  }
 
-  .dashboard-stats {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .dashboard-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .dashboard-header {
-    align-items: flex-start;
-    gap: 20px;
-    flex-direction: column;
-  }
-
-}
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
 
 @media (max-width: 600px) {
 
-  .dashboard-stats {
-    grid-template-columns: 1fr;
+  /* NAVBAR */
+
+  .navbar {
+    padding: 0 15px;
   }
 
-  .branch-row {
-    grid-template-columns: 1fr;
-    gap: 15px;
+  .navbar .brand {
+    font-size: 23px;
   }
 
-  .quick-actions {
-    grid-template-columns: 1fr;
+  .navbar > .nav-btn {
+    margin-right: 12px;
   }
 
+  .nav-btn {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+
+  .login-link {
+    font-size: 10px;
+  }
+
+
+  /* LANDING */
+
+  .hero h1 {
+    font-size: 58px;
+  }
+
+  .hero-text {
+    font-size: 14px;
+  }
+
+  .intro {
+    padding: 65px 7%;
+  }
+
+  .intro h2 {
+    font-size: 55px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stats div {
+    padding: 25px 7%;
+  }
+
+  .stats strong {
+    font-size: 35px;
+  }
+
+  .programs {
+    padding: 65px 7%;
+  }
+
+  .program-grid article {
+    min-height: 300px;
+    padding: 30px;
+  }
+
+
+  /* AUTH */
+
+  .auth-card {
+    padding: 30px 22px;
+  }
+
+  .auth-brand {
+    margin-bottom: 35px;
+  }
+
+  .auth-card h1 {
+    font-size: 38px;
+  }
+
+
+  /* DASHBOARD */
+
+  .mf-hero h1 {
+    font-size: 72px;
+    letter-spacing: -4px;
+  }
+
+  .mf-number-value {
+    font-size: 54px;
+  }
+
+  .mf-number strong {
+    font-size: 42px;
+  }
+
+  .mf-section-heading h2,
+  .mf-panel-heading h2 {
+    font-size: 36px;
+  }
+
+  .mf-action-panel h2 {
+    font-size: 48px;
+  }
+
+
+  /* PLACEHOLDER */
+
+  .page-placeholder {
+    padding: 40px 25px;
+  }
+
+  .page-placeholder h1 {
+    font-size: 48px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 430px) {
+
+  .navbar {
+    grid-template-columns: 1fr auto auto;
+  }
+
+  .navbar .brand {
+    font-size: 21px;
+  }
+
+  .navbar > .nav-btn {
+    margin-right: 8px;
+    padding: 8px 9px;
+  }
+
+  .login-link {
+    padding: 8px 0;
+  }
+
+  .hero h1 {
+    font-size: 52px;
+  }
+
+  .hero-content {
+    margin-left: 5%;
+  }
+
+  .mf-hero {
+    padding: 40px 20px;
+  }
+
+  .mf-hero h1 {
+    font-size: 64px;
+  }
+
+  .mf-section {
+    padding: 45px 20px;
+  }
+
+  .mf-panel,
+  .mf-action-panel {
+    padding: 45px 20px;
+  }
+
+  .mf-branch-stats {
+    gap: 20px;
+  }
 }
