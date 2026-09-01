@@ -37,7 +37,6 @@ a {
   min-height: 100vh;
 }
 
-
 /* =========================================================
    NAVBAR
    ========================================================= */
@@ -54,8 +53,6 @@ a {
   z-index: 100;
 }
 
-/* BRAND */
-
 .brand {
   justify-self: start;
   font-family: "Oswald", sans-serif;
@@ -67,8 +64,6 @@ a {
 .brand span {
   color: #c5f05a;
 }
-
-/* CENTER NAVIGATION */
 
 .nav-links {
   display: flex;
@@ -87,14 +82,6 @@ a {
   color: white;
 }
 
-/*
-   RIGHT SIDE
-
-   IMPORTANT:
-   Your Home.tsx currently has Join + Login directly
-   inside .navbar, so this selector handles them together.
-*/
-
 .navbar > .nav-btn,
 .navbar > .login-link {
   justify-self: end;
@@ -109,16 +96,12 @@ a {
   grid-column: 3;
 }
 
-/* If you later use .nav-actions */
-
 .nav-actions {
   justify-self: end;
   display: flex;
   align-items: center;
   gap: 22px;
 }
-
-/* JOIN */
 
 .nav-btn {
   background: #c5f05a;
@@ -139,8 +122,6 @@ a {
   opacity: 0.9;
 }
 
-/* LOGIN */
-
 .login-link {
   color: white;
   font-size: 13px;
@@ -153,7 +134,6 @@ a {
 .login-link:hover {
   color: #c5f05a;
 }
-
 
 /* =========================================================
    LANDING PAGE — HERO
@@ -172,23 +152,31 @@ a {
 .hero-image {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .hero-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  /* Keeps the subject higher and prevents unnecessary cropping */
+  object-position: center 18%;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
+
   background:
     linear-gradient(
       90deg,
-      rgba(10, 11, 9, 0.92) 0%,
-      rgba(10, 11, 9, 0.65) 40%,
-      rgba(10, 11, 9, 0.12) 75%
+      rgba(10, 11, 9, 0.94) 0%,
+      rgba(10, 11, 9, 0.78) 32%,
+      rgba(10, 11, 9, 0.40) 57%,
+      rgba(10, 11, 9, 0.10) 82%,
+      rgba(10, 11, 9, 0.04) 100%
     );
 }
 
@@ -197,6 +185,9 @@ a {
   z-index: 2;
   width: min(650px, 90%);
   margin-left: 8%;
+
+  /* FIX: prevents heading from touching/crossing navbar */
+  transform: translateY(22px);
 }
 
 .eyebrow {
@@ -283,49 +274,98 @@ a {
   letter-spacing: 2px;
 }
 
-
 /* =========================================================
-   LANDING PAGE — INTRO
+   LANDING PAGE — INTRO / PHILOSOPHY
    ========================================================= */
 
 .intro {
-  padding: 120px 9%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
+  min-height: 720px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
   align-items: center;
+  color: white;
+  background: #11120f;
 }
 
-.intro h2,
-.section-heading h2 {
+.intro-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  /* Keeps the person on the right side */
+  object-position: center center;
+
+  /* Slightly brighter than before */
+  filter: brightness(0.82);
+}
+
+.intro-overlay {
+  position: absolute;
+  inset: 0;
+
+  /*
+    Dark on left for text.
+    Gradually becomes lighter toward subject.
+    Top edge is slightly darker for smoother transition.
+  */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(17, 18, 15, 0.72) 0%,
+      rgba(17, 18, 15, 0.30) 22%,
+      rgba(17, 18, 15, 0.18) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(17, 18, 15, 0.94) 0%,
+      rgba(17, 18, 15, 0.78) 30%,
+      rgba(17, 18, 15, 0.42) 58%,
+      rgba(17, 18, 15, 0.12) 100%
+    );
+}
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+  width: min(560px, 85%);
+  margin-left: 9%;
+}
+
+.intro-content h2 {
   font-family: "Oswald", sans-serif;
-  font-size: clamp(50px, 6vw, 82px);
-  line-height: 0.95;
-  letter-spacing: -2px;
-  margin: 20px 0;
+  font-size: clamp(55px, 7vw, 95px);
+  line-height: 0.9;
+  letter-spacing: -3px;
+  margin: 20px 0 35px;
 }
 
-.intro h2 span {
-  color: #777a72;
+.intro-content h2 span {
+  color: #c5f05a;
 }
 
 .intro-text {
-  max-width: 480px;
+  max-width: 430px;
 }
 
 .intro-text p {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.7;
-  color: #62655e;
+  color: #c8c9c3;
+  margin-bottom: 15px;
 }
 
-.text-btn {
+.intro-text .text-btn {
+  margin-top: 15px;
+  padding: 10px 0;
   border: none;
   background: none;
-  padding: 10px 0;
+  color: white;
   font-weight: 800;
+  cursor: pointer;
 }
-
 
 /* =========================================================
    LANDING PAGE — STATS
@@ -359,7 +399,6 @@ a {
   letter-spacing: 2px;
   font-weight: 700;
 }
-
 
 /* =========================================================
    LANDING PAGE — PROGRAMS
@@ -431,7 +470,6 @@ a {
   padding: 15px 0 0;
 }
 
-
 /* =========================================================
    LANDING PAGE — CTA
    ========================================================= */
@@ -450,7 +488,6 @@ a {
   letter-spacing: -5px;
   margin: 30px 0 45px;
 }
-
 
 /* =========================================================
    FOOTER
@@ -472,7 +509,6 @@ footer p {
 footer small {
   font-size: 10px;
 }
-
 
 /* =========================================================
    AUTH — LOGIN / REGISTER
@@ -595,7 +631,6 @@ footer small {
   font-weight: 800;
 }
 
-
 /* =========================================================
    MONFIT APPLICATION LAYOUT
    ========================================================= */
@@ -606,7 +641,6 @@ footer small {
   background: #f3f2ed;
   color: #11120f;
 }
-
 
 /* =========================================================
    SIDEBAR
@@ -704,7 +738,6 @@ footer small {
   margin-top: 2px;
 }
 
-
 /* =========================================================
    APPLICATION MAIN
    ========================================================= */
@@ -714,7 +747,6 @@ footer small {
   width: calc(100% - 250px);
   min-height: 100vh;
 }
-
 
 /* =========================================================
    PLACEHOLDER PAGES
@@ -739,7 +771,6 @@ footer small {
   line-height: 1.6;
 }
 
-
 /* =========================================================
    PREMIUM DASHBOARD
    ========================================================= */
@@ -749,7 +780,6 @@ footer small {
   background: #f1f0e9;
   color: #11120f;
 }
-
 
 /* =========================================================
    DASHBOARD TOP BAR
@@ -825,7 +855,6 @@ footer small {
   margin-left: 7px;
   font-size: 16px !important;
 }
-
 
 /* =========================================================
    DASHBOARD HERO
@@ -906,7 +935,6 @@ footer small {
   color: #777970;
 }
 
-
 /* =========================================================
    DASHBOARD KEY NUMBERS
    ========================================================= */
@@ -968,7 +996,6 @@ footer small {
   font-size: 10px;
 }
 
-
 /* =========================================================
    DASHBOARD SECTION
    ========================================================= */
@@ -1001,7 +1028,6 @@ footer small {
   font-weight: 800;
   letter-spacing: 0.5px;
 }
-
 
 /* =========================================================
    BRANCHES
@@ -1080,7 +1106,6 @@ footer small {
   font-size: 20px;
 }
 
-
 /* =========================================================
    DASHBOARD BOTTOM
    ========================================================= */
@@ -1090,7 +1115,6 @@ footer small {
   grid-template-columns: 1.4fr 1fr;
   border-top: 1px solid #d4d3cb;
 }
-
 
 /* =========================================================
    ACTIVITY
@@ -1135,7 +1159,6 @@ footer small {
   font-size: 9px;
   text-align: right;
 }
-
 
 /* =========================================================
    QUICK ACTIONS
@@ -1187,7 +1210,6 @@ footer small {
   font-weight: 400;
 }
 
-
 /* =========================================================
    GENERAL BUTTON
    ========================================================= */
@@ -1217,13 +1239,11 @@ footer small {
   color: white;
 }
 
-
 /* =========================================================
    RESPONSIVE — LANDING
    ========================================================= */
 
 @media (max-width: 1100px) {
-
   .navbar {
     padding: 0 4%;
   }
@@ -1245,11 +1265,7 @@ footer small {
   }
 }
 
-
 @media (max-width: 900px) {
-
-  /* NAVBAR */
-
   .navbar {
     grid-template-columns: 1fr auto auto;
     padding: 0 25px;
@@ -1270,10 +1286,7 @@ footer small {
     grid-row: 1;
   }
 
-  /* LANDING */
-
   .intro {
-    grid-template-columns: 1fr;
     gap: 30px;
     padding: 80px 7%;
   }
@@ -1308,13 +1321,11 @@ footer small {
   }
 }
 
-
 /* =========================================================
    RESPONSIVE — APPLICATION
    ========================================================= */
 
 @media (max-width: 1000px) {
-
   .mf-numbers {
     grid-template-columns: 1fr 1fr;
   }
@@ -1337,15 +1348,11 @@ footer small {
   }
 }
 
-
 /* =========================================================
    TABLET / MOBILE
    ========================================================= */
 
 @media (max-width: 700px) {
-
-  /* NAVBAR */
-
   .navbar {
     height: 70px;
     padding: 0 20px;
@@ -1364,16 +1371,20 @@ footer small {
     font-size: 11px;
   }
 
-
   /* HERO */
 
   .hero {
     min-height: 650px;
   }
 
+  .hero-image img {
+    object-position: 65% center;
+  }
+
   .hero-content {
     margin-left: 6%;
     width: 88%;
+    transform: translateY(15px);
   }
 
   .hero h1 {
@@ -1391,6 +1402,53 @@ footer small {
     bottom: 25px;
   }
 
+  /* INTRO */
+
+  .intro {
+    min-height: 700px;
+    padding: 80px 7%;
+  }
+
+  .intro-image {
+    object-position: 65% center;
+    filter: brightness(0.78);
+  }
+
+  .intro-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(17, 18, 15, 0.78) 0%,
+        rgba(17, 18, 15, 0.32) 25%,
+        rgba(17, 18, 15, 0.22) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(17, 18, 15, 0.95) 0%,
+        rgba(17, 18, 15, 0.72) 55%,
+        rgba(17, 18, 15, 0.30) 100%
+      );
+  }
+
+  .intro-content {
+    width: 85%;
+    margin-left: 7%;
+  }
+
+  .intro-content h2 {
+    font-size: 58px;
+    letter-spacing: -2px;
+  }
+
+  .intro-text p {
+    font-size: 14px;
+  }
+
+  /* STATS */
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
 
   /* AUTH */
 
@@ -1406,7 +1464,6 @@ footer small {
     font-size: 42px;
   }
 
-
   /* SIDEBAR */
 
   .sidebar {
@@ -1417,7 +1474,6 @@ footer small {
     margin-left: 210px;
     width: calc(100% - 210px);
   }
-
 
   /* DASHBOARD TOPBAR */
 
@@ -1442,7 +1498,6 @@ footer small {
     display: none;
   }
 
-
   /* DASHBOARD HERO */
 
   .mf-hero {
@@ -1459,7 +1514,6 @@ footer small {
     font-size: 90px;
   }
 
-
   /* NUMBERS */
 
   .mf-numbers {
@@ -1475,7 +1529,6 @@ footer small {
     border-right: 0;
   }
 
-
   /* SECTION */
 
   .mf-section {
@@ -1487,7 +1540,6 @@ footer small {
     flex-direction: column;
     gap: 20px;
   }
-
 
   /* BRANCHES */
 
@@ -1507,7 +1559,6 @@ footer small {
   .mf-branch-number {
     width: 40px;
   }
-
 
   /* BOTTOM */
 
@@ -1530,15 +1581,11 @@ footer small {
   }
 }
 
-
 /* =========================================================
    SMALL PHONES
    ========================================================= */
 
 @media (max-width: 600px) {
-
-  /* NAVBAR */
-
   .navbar {
     padding: 0 15px;
   }
@@ -1560,9 +1607,6 @@ footer small {
     font-size: 10px;
   }
 
-
-  /* LANDING */
-
   .hero h1 {
     font-size: 58px;
   }
@@ -1571,16 +1615,16 @@ footer small {
     font-size: 14px;
   }
 
+  .hero-content {
+    transform: translateY(10px);
+  }
+
   .intro {
     padding: 65px 7%;
   }
 
   .intro h2 {
     font-size: 55px;
-  }
-
-  .stats {
-    grid-template-columns: 1fr 1fr;
   }
 
   .stats div {
@@ -1600,7 +1644,6 @@ footer small {
     padding: 30px;
   }
 
-
   /* AUTH */
 
   .auth-card {
@@ -1614,7 +1657,6 @@ footer small {
   .auth-card h1 {
     font-size: 38px;
   }
-
 
   /* DASHBOARD */
 
@@ -1640,9 +1682,6 @@ footer small {
     font-size: 48px;
   }
 
-
-  /* PLACEHOLDER */
-
   .page-placeholder {
     padding: 40px 25px;
   }
@@ -1652,13 +1691,11 @@ footer small {
   }
 }
 
-
 /* =========================================================
    VERY SMALL PHONES
    ========================================================= */
 
 @media (max-width: 430px) {
-
   .navbar {
     grid-template-columns: 1fr auto auto;
   }

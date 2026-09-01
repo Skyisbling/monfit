@@ -77,34 +77,40 @@ function Home() {
 
         {/* INTRO / ABOUT */}
         <section className="intro" id="about">
-          <div>
-            <p className="eyebrow dark">
-              THE MONFIT PHILOSOPHY
-            </p>
+  <img
+    className="intro-image"
+    src="/monfit-second.jpg"
+    alt="Monfit training"
+  />
 
-            <h2>
-              Fitness isn't
-              <br />
-              <span>just a look.</span>
-            </h2>
-          </div>
+  <div className="intro-overlay" />
 
-          <div className="intro-text">
-            <p>
-              It's about becoming stronger, more confident and
-              more disciplined every single day.
-            </p>
+  <div className="intro-content">
+    <p className="eyebrow">THE MONFIT PHILOSOPHY</p>
 
-            <p>
-              Monfit brings training, nutrition and lifestyle
-              together into one simple system.
-            </p>
+    <h2>
+      Fitness isn't
+      <br />
+      <span>just a look.</span>
+    </h2>
 
-            <a href="#programs" className="text-btn">
-              Discover Monfit →
-            </a>
-          </div>
-        </section>
+    <div className="intro-text">
+      <p>
+        It's about becoming stronger, more confident and
+        more disciplined every single day.
+      </p>
+
+      <p>
+        Monfit brings training, nutrition and lifestyle
+        together into one simple system.
+      </p>
+
+      <button className="text-btn">
+        Discover Monfit →
+      </button>
+    </div>
+  </div>
+</section>
 
         {/* STATS */}
         <section className="stats">
